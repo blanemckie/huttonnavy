@@ -1,0 +1,75 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Hutton Navy FC | Admin</title>
+<meta name="robots" content="noindex,nofollow">
+<link rel="stylesheet" href="admin.css?v=20260914-1">
+<script src="admin.js?v=20260914-1" defer></script>
+</head>
+<body>
+<div id="admin-gate" class="admin-gate">
+  <div class="admin-login">
+    <img src="hutton-crest.webp?v=20260914-3" alt="Hutton Football Club crest">
+    <p class="eyebrow">HUTTON NAVY FC</p>
+    <h1>Admin</h1>
+    <p>Enter the admin password.</p>
+    <form id="admin-form">
+      <input id="admin-password" type="password" autocomplete="current-password" placeholder="Admin password" aria-label="Admin password">
+      <button type="submit">ENTER ADMIN</button>
+    </form>
+    <div id="admin-error" class="admin-error" aria-live="polite"></div>
+  </div>
+</div>
+
+<main id="admin-dashboard" class="dashboard hidden">
+  <header class="admin-header">
+    <div>
+      <p class="eyebrow">HUTTON NAVY FC</p>
+      <h1>Admin Dashboard</h1>
+    </div>
+    <a href="./">← Back to site</a>
+  </header>
+
+  <section class="admin-grid">
+    <article class="metric-card primary">
+      <span>👀 Website views</span>
+      <strong id="view-count">—</strong>
+      <small>Parent-area visits</small>
+    </article>
+    <article class="metric-card">
+      <span>⚽ Matches played</span>
+      <strong>1</strong>
+      <small>2026/27 season</small>
+    </article>
+    <article class="metric-card">
+      <span>🥅 Goals scored</span>
+      <strong>6</strong>
+      <small>Goals conceded: 6</small>
+    </article>
+  </section>
+
+  <section class="admin-panel">
+    <div class="panel-head">
+      <div><h2>Site activity</h2><p>View count refreshes from the website counter.</p></div>
+      <button id="refresh-count" type="button">Refresh count</button>
+    </div>
+    <div id="count-status" class="status">Loading…</div>
+  </section>
+
+  <section class="admin-panel">
+    <h2>Weekly update checklist</h2>
+    <div class="check-grid">
+      <span>📝 Latest match report</span>
+      <span>📸 Match photo</span>
+      <span>📅 Fixtures & results</span>
+      <span>📊 Season stats</span>
+      <span>⚽ Goalscorers</span>
+      <span>⭐ Man of the Match</span>
+      <span>👕 Appearances</span>
+    </div>
+  </section>
+</main>
+</body>
+</html>
