@@ -59,7 +59,7 @@
         <div class="full-time">FULL TIME: Hutton Navy 6–6 Brentwood Storm</div>
         <div class="closing"><strong>⚽️ GOALSCORERS</strong><br>Alfie ⚽️⚽️⚽️⚽️ · Bobby ⚽️ · Theo G ⚽️</div>
         <div class="uth"><strong>🔴⚫️ UTH 🔴⚫️</strong><br>Up The Navy 🚢</div>
-        <figure class="match-photo-wrap"><img class="team-photo" src="team-photo.jpg?v=20260914-4" width="800" height="600" alt="Hutton Navy players after the Brentwood Storm match"></figure>
+        <figure class="match-photo-wrap"><img id="team-photo-hq" class="team-photo" src="team-photo.jpg?v=20260914-4" width="1000" height="750" alt="Hutton Navy players after the Brentwood Storm match"></figure>
       </article>
     </section>
     <aside class="sidebar">
@@ -71,5 +71,31 @@
   <section id="stats" class="lower-panel"><div class="section-banner simple centered"><h2>📊 SEASON STATS</h2></div><div class="season-grid"><div class="big-stat"><b>1</b><span>Played</span></div><div class="big-stat"><b>0</b><span>Wins</span></div><div class="big-stat"><b>1</b><span>Draws</span></div><div class="big-stat"><b>0</b><span>Losses</span></div><div class="big-stat"><b>6</b><span>Goals Scored</span></div><div class="big-stat"><b>6</b><span>Goals Conceded</span></div></div><div class="tables stats-tables"><div><h3>Top Goalscorers</h3><p>🥇 Alfie <b>4</b></p><p>🥈 Bobby <b>1</b></p><p>🥈 Theo G <b>1</b></p></div><div><h3>Man of the Match</h3><p>⭐ Alfie <b>1</b></p></div><div><h3>Appearances</h3><p>👕 Alfie <b>1</b></p><p>👕 Bobby <b>1</b></p><p>👕 Teddy <b>1</b></p><p>👕 Theo Mc <b>1</b></p><p>👕 Marshall <b>1</b></p><p>👕 Fraser <b>1</b></p><p>👕 Theo G <b>1</b></p></div></div></section>
 </main>
 <footer><span>🚢 HUTTON NAVY FC</span></footer>
+<script>
+(async () => {
+  const img = document.getElementById('team-photo-hq');
+  if (!img) return;
+  try {
+    const parts = await Promise.all([
+      'team-photo-hq-1.txt?v=20260914-1',
+      'team-photo-hq-2.txt?v=20260914-1',
+      'team-photo-hq-3.txt?v=20260914-1',
+      'team-photo-hq-4.txt?v=20260914-1'
+    ].map(async src => {
+      const res = await fetch(src, {cache: 'no-store'});
+      if (!res.ok) throw new Error('Photo data failed to load');
+      return (await res.text()).trim();
+    }));
+    const binary = atob(parts.join(''));
+    const bytes = new Uint8Array(binary.length);
+    for (let i = 0; i < binary.length; i++) bytes[i] = binary.charCodeAt(i);
+    const url = URL.createObjectURL(new Blob([bytes], {type: 'image/avif'}));
+    img.onload = () => URL.revokeObjectURL(url);
+    img.src = url;
+  } catch (err) {
+    console.error('High-resolution team photo fallback in use', err);
+  }
+})();
+</script>
 </body>
 </html>
