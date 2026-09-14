@@ -2,10 +2,16 @@
   const KEY = 'huttonnavy_access';
   const PASS = 'UTH';
   const root = document.documentElement;
+  const SITE = 'blanemckie.github.io';
+  const PATH = '/huttonnavy/';
+  const trackVisit = () => {
+    fetch(`https://page-views-api.ratneshc.com/api/v1/track?site=${encodeURIComponent(SITE)}&path=${encodeURIComponent(PATH)}`, {keepalive: true}).catch(() => {});
+  };
   const unlock = () => {
     root.classList.remove('auth-locked');
     document.getElementById('auth-gate')?.classList.add('auth-hidden');
     sessionStorage.setItem(KEY, '1');
+    trackVisit();
   };
   if (sessionStorage.getItem(KEY) === '1') {
     unlock();
