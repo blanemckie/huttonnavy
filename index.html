@@ -6,8 +6,22 @@
 <title>Hutton Navy FC | Match Centre</title>
 <meta name="description" content="Hutton Navy FC match reports, fixtures, results and 2026/27 season stats.">
 <link rel="stylesheet" href="styles.css?v=20260914-6">
+<link rel="stylesheet" href="auth.css?v=20260914-1">
+<script src="auth.js?v=20260914-1" defer></script>
 </head>
 <body>
+<div id="auth-gate" class="auth-gate" role="dialog" aria-modal="true" aria-label="Password required">
+  <div class="auth-card">
+    <img src="hutton-crest.webp?v=20260914-3" alt="Hutton Football Club crest">
+    <h2>🔴⚫️ HUTTON NAVY FC</h2>
+    <p>Enter the team password to access the Match Centre.</p>
+    <form id="auth-form" class="auth-form">
+      <input id="auth-password" type="password" autocomplete="current-password" placeholder="Password" aria-label="Password">
+      <button type="submit">ENTER</button>
+    </form>
+    <div id="auth-error" class="auth-error" aria-live="polite"></div>
+  </div>
+</div>
 <header class="masthead">
   <div class="mast-inner">
     <img class="crest-img" src="hutton-crest.webp?v=20260914-3" alt="Hutton Football Club crest">
