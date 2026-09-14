@@ -16,6 +16,10 @@
     const form = document.getElementById('auth-form');
     const input = document.getElementById('auth-password');
     const error = document.getElementById('auth-error');
+    const gate = document.getElementById('auth-gate');
+    const prompt = gate?.querySelector('.auth-card p');
+    if (prompt) prompt.textContent = 'Enter parents password to get in';
+    if (input) input.placeholder = 'Parents password';
     input?.focus();
     form?.addEventListener('submit', (e) => {
       e.preventDefault();
